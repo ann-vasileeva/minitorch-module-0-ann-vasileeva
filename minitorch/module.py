@@ -34,7 +34,6 @@ class Module:
         self.training = True
         for child_name in self._modules:
             self._modules[child_name].train()
-            
 
     def eval(self) -> None:
         """Set the mode of this module and all descendent modules to `eval`."""
@@ -54,14 +53,13 @@ class Module:
         for child_name, child_module in self._modules.items():
             child_params = child_module.named_parameters()
             for child_param_name, child_param in child_params:
-                params.append((child_name+"."+child_param_name, child_param))
+                params.append((child_name + "." + child_param_name, child_param))
         return params
 
     def parameters(self) -> Sequence[Parameter]:
         """Enumerate over all the parameters of this module and its descendents."""
         params = self.named_parameters()
         return [p for _, p in params]
-        
 
     def add_parameter(self, k: str, v: Any) -> Parameter:
         """Manually add a parameter. Useful helper for scalar parameters.

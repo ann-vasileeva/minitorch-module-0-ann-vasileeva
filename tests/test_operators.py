@@ -130,7 +130,8 @@ def test_symmetric(a: float, b: float) -> None:
     """Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
     gives the same value regardless of the order of its input.
     """
-    assert mul(a,b) == mul(b, a)
+    assert mul(a, b) == mul(b, a)
+
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
@@ -138,7 +139,7 @@ def test_distribute(x: float, y: float, z: float) -> None:
     r"""Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    assert abs(mul(z, add(x,y)) - add(mul(z, x),mul(z, y))) < 1e-10
+    assert abs(mul(z, add(x, y)) - add(mul(z, x), mul(z, y))) < 1e-10
 
 
 @pytest.mark.task0_2
@@ -146,8 +147,8 @@ def test_distribute(x: float, y: float, z: float) -> None:
 def test_other(x: float, y: float) -> None:
     """Write a test that ensures some other property holds for your functions."""
     if x < 10 and y < 10:
-        assert abs(exp(add(x,y)) - mul(exp(x), exp(y))) < 1e-3
-    
+        assert abs(exp(add(x, y)) - mul(exp(x), exp(y))) < 1e-3
+
 
 # ## Task 0.3  - Higher-order functions
 
